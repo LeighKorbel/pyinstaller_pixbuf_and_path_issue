@@ -65,6 +65,9 @@ void quitButtonClicked(__attribute__((unused)) GtkWidget *widget,
 	python_executable = "dist/plot/./plot";
 	g_print("Not Using MSYS2\n");
 	#endif
+	
+	// Set Environment Variable for g_spawn() needed by Python (HOMEPATH)
+	g_setenv("HOMEPATH", g_get_home_dir(), TRUE);
 
 	// Create argv for the python executable
 	gchar* argv[] = {python_executable, NULL};
